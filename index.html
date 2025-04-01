@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray Kids | VSCO Style</title>
+    <style>
+        :root {
+            --main-font-size: 16px;
+            --primary-color: #04148fd2;
+            --secondary-color: #1c56c1;
+            --text-color: #000000;
+            --light-text: #f8f8f8;
+            --accent-color: #060c72;
+            --spacing: 20px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: var(--main-font-size);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-bar {
+            background-color: var(--accent-color);
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .accessibility-btn {
+            background-color: var(--light-text);
+            border: 1px solid var(--text-color);
+            border-radius: 15px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .accessibility-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            padding: var(--spacing);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header-image {
+    width: 800px;          /* Largura fixa */
+    height: 300px;         /* Altura fixa */
+    object-fit: cover;     /* Corta a imagem para preencher o espaço */
+    opacity: 0.9;
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;        /* Centraliza horizontalmente */
+    max-width: 100%;       /* Evita ultrapassar o container (opcional) */
+}
+        h1 {
+            font-size: calc(var(--main-font-size) * 2.5);
+            color: var(--text-color);
+            margin: 20px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: calc(var(--main-font-size) * 1.8);
+            color: var(--text-color);
+            margin-top: 40px;
+            font-weight: 300;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing);
+        }
+
+        .intro {
+            text-align: center;
+            margin: 40px 0;
+            font-size: calc(var(--main-font-size) * 1.1);
+            line-height: 1.8;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing);
+            margin: 40px 0;
+        }
+
+        .member-card {
+            background-color: rgb(255, 255, 255);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 15px;
+        }
+
+        .member-name {
+            font-size: calc(var(--main-font-size) * 1.3);
+            margin: 0 0 5px 0;
+            color: var(--text-color);
+        }
+
+        .member-position {
+            color: var(--accent-color);
+            margin: 0 0 10px 0;
+            font-size: calc(var(--main-font-size) * 0.9);
+        }
+
+        .discography {
+            margin: 40px 0;
+        }
+
+        .album {
+            display: flex;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .album-cover {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .album-info {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .album-title {
+            font-size: calc(var(--main-font-size) * 1.4);
+            margin: 0 0 10px 0;
+        }
+
+        .album-date {
+            color: #590404;
+            margin: 0 0 15px 0;
+            font-size: calc(var(--main-font-size) * 0.9);
+        }
+
+        .tracklist {
+            list-style-type: none;
+            padding: 0;
+            columns: 2;
+        }
+
+        .tracklist li {
+            margin-bottom: 5px;
+            break-inside: avoid;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            padding: var(--spacing);
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: calc(var(--main-font-size) * 1.2);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* VSCO aesthetic elements */
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: rotate(1deg);
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+        }
+
+        .polaroid-caption {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .sticker {
+            position: absolute;
+            background: rgb(153, 30, 30);
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            transform: rotate(-10deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .handwritten {
+            font-family: 'Brush Script MT', cursive;
+            color: var(--accent-color);
+            font-size: calc(var(--main-font-size) * 1.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .album {
+                flex-direction: column;
+            }
+            
+            .album-cover {
+                width: 100%;
+                height: auto;
+            }
+            
+            .tracklist {
+                columns: 1;
+            }
+        }
+
+        /* High contrast mode */
+        .high-contrast {
+            --primary-color: #390000;
+            --secondary-color: #240101;
+            --text-color: #c44242;
+            --light-text: #ffffff;
+            --accent-color: rgb(198, 8, 8);
+        }
+    </style>
+</head>
+<body>
+    <div class="accessibility-bar">
+        <button class="accessibility-btn" id="increaseFont">A+</button>
+        <button class="accessibility-btn" id="decreaseFont">A-</button>
+        <button class="accessibility-btn" id="highContrast">Alto Contraste</button>
+    </div>
+
+    <header>
+        <div class="sticker" style="top: 20px; left: 20px;">OT8 ♡</div>
+        <img src="feliz.jpg" alt="Stray Kids group photo" class="header-image">
+        <h1>Stray Kids</h1>
+        <p class="handwritten">stay forever young</p>
+    </header>
+
+    <div class="container">
+        <section class="intro">
+            <p>Stray Kids (스트레이 키즈) é um grupo masculino sul-coreano formado pela JYP Entertainment através do reality show de mesmo nome em 2017. O grupo é composto por oito membros: Bang Chan, Lee Know, Changbin, Hyunjin, Han, Felix, Seungmin e I.N.</p>
+            <p>Conhecidos por sua participação ativa na produção de suas músicas, o grupo se destaca no cenário do K-pop por seu som único e letras poderosas.</p>
+            
+            <div class="polaroid">
+                <img src="skz.jpg" alt="Stray Kids polaroid photo">
+                <p class="polaroid-caption">2025 © STAY</p>
+            </div>
+        </section>
+
+        <section class="members">
+            <h2>Membros</h2>
+            <div class="members-grid">
+                <div class="member-card">
+                    <img src="chan.jpg" alt="Bang Chan" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Bang Chan</h3>
+                        <p class="member-position">Líder, Vocalista, Rapper, Produtor</p>
+                        <p>Nascido na Austrália, é o coração e a alma do grupo, participando ativamente da produção musical.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="lee know.jpg" alt="Lee Know" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Lee Know</h3>
+                        <p class="member-position">Dançarino Principal, Vocalista</p>
+                        <p>Conhecido por suas habilidades de dança impressionantes e personalidade única.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="changbin.jpg" alt="Changbin" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Changbin</h3>
+                        <p class="member-position">Rapper Principal, Produtor</p>
+                        <p>Famoso por sua rapidez no rap e participação ativa na composição das músicas.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="hyu.jpg" alt="Hyunjin" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Hyunjin</h3>
+                        <p class="member-position">Dançarino Principal, Rapper, Visual</p>
+                        <p>Reconhecido por sua presença de palco magnética e habilidades artísticas.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="han.jpg" alt="Han" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Han</h3>
+                        <p class="member-position">Rapper, Vocalista, Produtor</p>
+                        <p>Versátil, capaz de alternar entre rap e vocais com facilidade, e um prolífico compositor.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="falix.jpg" alt="Felix" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Felix</h3>
+                        <p class="member-position">Rapper, Dançarino</p>
+                        <p>Conhecido por sua voz grave única e carisma no palco.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="seun.jpg" alt="Seungmin" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">Seungmin</h3>
+                        <p class="member-position">Vocalista Principal</p>
+                        <p>Voz poderosa e estável, frequentemente responsável pelas partes vocais mais desafiadoras.</p>
+                    </div>
+                </div>
+                
+                <div class="member-card">
+                    <img src="in.jpg" alt="I.N" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">I.N</h3>
+                        <p class="member-position">Vocalista, Maknae</p>
+                        <p>O mais novo do grupo, conhecido por seu timbre vocal único e personalidade adorável.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="discography">
+            <h2>Discografia</h2>
+            
+            <div class="album"> <img src="go.jpg" alt="GO LIVE album cover" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">GO LIVE</h3>
+                    <p class="album-date">17 de junho de 2020</p>
+                    <ul class="tracklist">
+                        <li>GO LIVE</li>
+                        <li>God's Menu</li>
+                        <li>Easy</li>
+                        <li>Pacemaker</li>
+                        <li>Airplane</li>
+                        <li>Another Day</li>
+                        <li>Phobia</li>
+                        <li>Blueprint</li>
+                        <li>Ta</li>
+                        <li>Haven</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="album">
+                <img src="g4.jpg" alt="NOEASY album cover" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">NOEASY</h3>
+                    <p class="album-date">23 de agosto de 2021</p>
+                    <ul class="tracklist">
+                        <li>Thunderous</li>
+                        <li>DOMINO</li>
+                        <li>SSICK</li>
+                        <li>The View</li>
+                        <li>Sorry, I Love You</li>
+                        <li>Silent Cry</li>
+                        <li>Red Lights</li>
+                        <li>Surfin'</li>
+                        <li>Gone Away</li>
+                        <li>WOLFGANG</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="album">
+                <img src="max.jpg" alt="MAXIDENT album cover" class="album-cover">
+                <div class="album-info">
+                    <h3 class="album-title">MAXIDENT</h3>
+                    <p class="album-date">7 de outubro de 2022</p>
+                    <ul class="tracklist">
+                        <li>CASE 143</li>
+                        <li>CHILL</li>
+                        <li>Give Me Your TMI</li>
+                        <li>Super Board</li>
+                        <li>3RACHA</li>
+                        <li>Taste</li>
+                        <li>Can't Stop</li>
+                        <li>CIRCUS</li>
+                        <li>N/S</li>
+                        <li>Happy Ending</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Stray Kids Fan Site | Não oficial</p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+            <a href="#" aria-label="Spotify">Spotify</a>
+        </div>
+        <p>Made with ♡ by a STAY</p>
+    </footer>
+
+    <script>
+        // Font size adjustment
+        document.getElementById('increaseFont').addEventListener('click', function() {
+            const root = document.documentElement;
+            let currentSize = parseFloat(getComputedStyle(root).getPropertyValue('--main-font-size'));
+            root.style.setProperty('--main-font-size', (currentSize + 1) + 'px');
+        });
+
+        document.getElementById('decreaseFont').addEventListener('click', function() {
+            const root = document.documentElement;
+            let currentSize = parseFloat(getComputedStyle(root).getPropertyValue('--main-font-size'));
+            if (currentSize > 12) {
+                root.style.setProperty('--main-font-size', (currentSize - 1) + 'px');
+            }
+        });
+
+        // High contrast mode
+        document.getElementById('highContrast').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+
+        // Image alt text for placeholder images
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[src*="placeholder"]');
+            images.forEach(img => {
+                if (img.alt.includes('placeholder')) {
+                    img.alt = img.src.split('?text=')[1]?.replace(/\+/g, ' ') || 'Stray Kids image';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
